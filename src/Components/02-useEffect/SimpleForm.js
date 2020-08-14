@@ -1,51 +1,52 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 
-import './formEffect.css'
+import "./formEffect.css";
 
 const SimpleForm = () => {
-
     const [formValues, setFormValues] = useState({
-        name : '',
-        email: '',
-        password : ''
-    })
+        name: "",
+        email: "",
+        password: "",
+    });
 
-    const {name, email, password} = formValues;
+    const { name, email, password } = formValues;
 
-
-    const handleInputChange = () => {
-
-        setFormValues( {
+    const handleInputChange = ({ target }) => {
+        setFormValues({
             ...formValues,
-            
-        })
-
-    }
-
+            [target.name]: target.value,
+        });
+    };
 
     return (
-        <div className='form-group'>
+        <div className="form-group">
             <input
-                type = 'text'
-                className = 'form-control'
-                placeholder = 'Tu nombre'
-                value = {name}
+                name="name"
+                type="text"
+                className="form-control"
+                placeholder="Tu nombre"
+                value={name}
+                onChange={handleInputChange}
             />
-            <input 
-                type = 'email'
-                className = 'form-control'
-                placeholder = 'Tu email'
-                value = {email}
+            <input
+                name="email"
+                type="email"
+                className="form-control"
+                placeholder="Tu email"
+                value={email}
+                onChange={handleInputChange}
             />
-            <input 
-                type = 'password'
-                className = 'form-control'
-                placeholder = 'Contraseña'
-                value = {password}
+            <input
+                name="password"
+                type="password"
+                className="form-control"
+                placeholder="Contraseña"
+                value={password}
+                onChange={handleInputChange}
             />
-            <button className = 'btn btn-primary'>Submit</button>
+            <button className="btn btn-primary">Submit</button>
         </div>
-    )
-}
+    );
+};
 
-export default SimpleForm
+export default SimpleForm;
